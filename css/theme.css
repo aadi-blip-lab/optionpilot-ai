@@ -1,41 +1,59 @@
-/* =========================================
-   OPTIONPILOT DESIGN SYSTEM
-========================================= */
+/* ==========================================
+   OPTIONPILOT THEME ENGINE
+========================================== */
 
 :root{
 
-    /* Background */
+    --bg:#0d1117;
+    --surface:#161b22;
+    --surface2:#1f2632;
 
-    --bg:#0E1116;
-    --surface:#171B22;
-    --surface-light:#202632;
+    --text:#f5f7fa;
+    --muted:#8b95a7;
 
-    /* Text */
+    --accent:#64d8ff;
 
-    --text:#F5F7FA;
-    --muted:#94A3B8;
+    --profit:#52d273;
+    --loss:#ff6b6b;
+    --warning:#ffc857;
 
-    /* Brand */
-
-    --primary:#6EE7F9;
-
-    /* Trading */
-
-    --profit:#5EE38C;
-    --loss:#FF6B6B;
-    --warning:#FFC857;
-
-    /* Radius */
+    --border:rgba(255,255,255,.06);
 
     --radius:18px;
 
-    /* Shadow */
+    --transition:.30s;
 
-    --shadow:
-    0 10px 40px rgba(0,0,0,.35);
+}
 
-    /* Animation */
+/* ---------- Focus ---------- */
 
-    --speed:.25s;
+body.focus{
+
+    --bg:#0d1117;
+    --surface:#161b22;
+    --surface2:#1f2632;
+    --accent:#64d8ff;
+
+}
+
+/* ---------- Chill ---------- */
+
+body.chill{
+
+    --bg:#111615;
+    --surface:#1a211f;
+    --surface2:#24312d;
+    --accent:#83ffd7;
+
+}
+
+/* ---------- Learn ---------- */
+
+body.learn{
+
+    --bg:#181413;
+    --surface:#241d1a;
+    --surface2:#312823;
+    --accent:#ffb457;
 
 }
