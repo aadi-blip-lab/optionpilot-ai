@@ -1,57 +1,243 @@
-/* ======================================
-   OPTIONPILOT UI ENGINE
-====================================== */
+/* ==========================================================
+   OPTIONPILOT
+   APP.JS v1
+==========================================================*/
 
 const body = document.body;
 
-const modes = document.querySelectorAll(".mode");
+/* ==========================================
+   Theme Engine
+==========================================*/
 
-modes.forEach(button => {
+const modeButtons = document.querySelectorAll(".mode");
 
-    button.addEventListener("click", () => {
+const savedTheme = localStorage.getItem("theme") || "focus";
 
-        modes.forEach(btn => btn.classList.remove("active"));
+body.className = savedTheme;
 
-        button.classList.add("active");
+modeButtons.forEach(btn => {
 
-        const mode = button.textContent.trim().toLowerCase();
+    if(btn.dataset.theme === savedTheme){
 
-        body.classList.remove("focus","chill","learn");
+        btn.classList.add("active");
 
-        body.classList.add(mode);
+    }
 
-        localStorage.setItem("theme",mode);
+    btn.addEventListener("click",()=>{
+
+        modeButtons.forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        body.className = btn.dataset.theme;
+
+        localStorage.setItem("theme",btn.dataset.theme);
 
     });
 
 });
 
-const savedTheme = localStorage.getItem("theme");
 
-if(savedTheme){
+/* ==========================================
+   Clock Elements
+==========================================*/
 
-    body.classList.remove("focus","chill","learn");
+const digitalClock = document.getElementById("digitalClock");
+const todayDate = document.getElementById("todayDate");
 
-    body.classList.add(savedTheme);
+const hourHand = document.getElementById("hourHand");
+const minuteHand = document.getElementById("minuteHand");
+const secondHand = document.getElementById("secondHand");
 
-    modes.forEach(btn=>{
+const marketStatus = document.getElementById("marketStatus");
+const marketCountdown = document.getElementById("marketCountdown");
 
-        btn.classList.remove("active");
 
-        if(btn.textContent.trim().toLowerCase()==savedTheme){
+/* ==========================================
+   Clock
+==========================================*/
 
-            btn.classList.add("active");
+function updateClock(){
 
-        }
+    const now = new Date();
 
-    });
+    const indiaTime = new Date(
+
+        now.toLocaleString("en-US",{
+
+            timeZone:"Asia/Kolkata"
+
+        })
+
+    );
+
+    const hours = indiaTime.getHours();
+
+    const minutes = indiaTime.getMinutes();
+
+    const seconds = indiaTime.getSeconds();
+
+    digitalClock.textContent =
+
+        indiaTime.toLocaleTimeString("en-IN",{
+
+            hour12:false
+
+        });
+
+    todayDate.textContent =
+
+        indiaTime.toLocaleDateString("en-IN",{
+
+            weekday:"long",
+
+            day:"numeric",
+
+            month:"long",
+
+            year:"numeric"
+
+        });
+
+    const secondDeg = seconds * 6;
+
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+
+    secondHand.style.transform =
+        `translateX(-50%) rotate(${secondDeg}deg)`;
+
+    minuteHand.style.transform =
+        `translateX(-50%) rotate(${minuteDeg}deg)`;
+
+    hourHand.style.transform =
+        `translateX(-50%) rotate(${hourDeg}deg)`;
+
+    updateMarket(indiaTime);
 
 }
 
-const enterButton=document.querySelector(".primary");
 
-enterButton.addEventListener("click",()=>{
+/* ==========================================
+   Indian Market Engine
+==========================================*/
 
-    alert("Workspace coming in the next update 🚀");
+function updateMarket(now){
+
+    const day = now.getDay();
+
+    if(day === 0){
+
+        marketStatus.textContent = "Weekend";
+
+        marketStatus.className="market-status market-closed";
+
+        marketCountdown.textContent="Market opens tomorrow at 09:15";
+
+        return;
+
+    }
+
+    if(day === 6){
+
+        marketStatus.textContent = "Weekend";
+
+        marketStatus.className="market-status market-closed";
+
+        marketCountdown.textContent="Market opens in 2 days";
+
+        return;
+
+    }
+
+    const currentMinutes =
+
+        now.getHours()*60 + now.getMinutes();
+
+    const open = 9*60 + 15;
+
+    const close = 15*60 + 30;
+
+    if(currentMinutes < open){
+
+        marketStatus.textContent="Pre Market";
+
+        marketStatus.className="market-status market-wait";
+
+        const diff = open-currentMinutes;
+
+        const h=Math.floor(diff/60);
+
+        const m=diff%60;
+
+        marketCountdown.textContent=
+        `Opens in ${h}h ${m}m`;
+
+    }
+
+    else if(currentMinutes < close){
+
+        marketStatus.textContent="Market Live";
+
+        marketStatus.className="market-status market-open";
+
+        const diff = close-currentMinutes;
+
+        const h=Math.floor(diff/60);
+
+        const m=diff%60;
+
+        marketCountdown.textContent=
+        `Closes in ${h}h ${m}m`;
+
+    }
+
+    else{
+
+        marketStatus.textContent="Market Closed";
+
+        marketStatus.className="market-status market-closed";
+
+        const tomorrowOpen=(24*60-currentMinutes)+open;
+
+        const h=Math.floor(tomorrowOpen/60);
+
+        const m=tomorrowOpen%60;
+
+        marketCountdown.textContent=
+        `Opens in ${h}h ${m}m`;
+
+    }
+
+}
+
+
+/* ==========================================
+   Fake Quotes (Temporary)
+==========================================*/
+
+document.getElementById("niftyValue").textContent="25,000";
+document.getElementById("sensexValue").textContent="82,000";
+document.getElementById("bankniftyValue").textContent="56,000";
+
+
+/* ==========================================
+   Workspace Button
+==========================================*/
+
+document.getElementById("workspaceBtn")
+.addEventListener("click",()=>{
+
+    alert("Workspace coming in Version 2");
 
 });
+
+
+/* ==========================================
+   Start
+==========================================*/
+
+updateClock();
+
+setInterval(updateClock,1000);
