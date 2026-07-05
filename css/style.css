@@ -1,27 +1,12 @@
-/* ===============================
-   OPTIONPILOT AI
-   Cyberpunk Theme v1
-================================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-:root{
+html{
 
-    --bg:#050816;
-    --sidebar:#0B1120;
-    --card:#111827;
-
-    --cyan:#00E5FF;
-    --green:#00FF88;
-    --purple:#8B5CF6;
-    --red:#FF4560;
-
-    --text:#F5F7FA;
-    --muted:#9CA3AF;
+    scroll-behavior:smooth;
 
 }
 
@@ -31,117 +16,34 @@ body{
 
     color:var(--text);
 
-    font-family:'Inter',sans-serif;
+    font-family:Inter,sans-serif;
 
-    overflow-x:hidden;
+    transition:.35s;
 
 }
 
-.background-grid{
+.noise{
 
     position:fixed;
 
     inset:0;
 
+    opacity:.025;
+
+    pointer-events:none;
+
     background-image:
-    linear-gradient(rgba(0,229,255,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,.05) 1px,transparent 1px);
+    radial-gradient(circle at 25% 25%,white 1px,transparent 1px);
 
-    background-size:40px 40px;
-
-    z-index:-1;
+    background-size:24px 24px;
 
 }
 
-.container{
+.topbar{
 
-    display:flex;
+    width:min(1300px,92%);
 
-    min-height:100vh;
-
-}
-
-.sidebar{
-
-    width:260px;
-
-    background:var(--sidebar);
-
-    border-right:1px solid rgba(0,229,255,.15);
-
-    padding:30px;
-
-}
-
-.logo h1{
-
-    font-family:'Orbitron',sans-serif;
-
-    color:var(--cyan);
-
-    font-size:28px;
-
-}
-
-.logo span{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-}
-
-nav{
-
-    margin-top:50px;
-
-}
-
-nav a{
-
-    display:block;
-
-    color:var(--muted);
-
-    text-decoration:none;
-
-    padding:14px;
-
-    margin-bottom:10px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-nav a:hover{
-
-    background:rgba(0,229,255,.1);
-
-    color:var(--cyan);
-
-}
-
-nav .active{
-
-    background:rgba(0,229,255,.15);
-
-    color:var(--cyan);
-
-}
-
-main{
-
-    flex:1;
-
-    padding:40px;
-
-}
-
-header{
+    margin:auto;
 
     display:flex;
 
@@ -149,18 +51,226 @@ header{
 
     align-items:center;
 
-}
-
-header h2{
-
-    font-family:'Orbitron',sans-serif;
+    padding:35px 0;
 
 }
 
-.status{
+.brand{
 
-    color:var(--green);
+    display:flex;
 
-    font-weight:600;
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.brand-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    box-shadow:0 0 25px var(--accent);
+
+}
+
+.brand h2{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    letter-spacing:3px;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+nav a{
+
+    color:var(--muted);
+
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+nav a:hover{
+
+    color:var(--accent);
+
+}
+
+.hero{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+    min-height:78vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero-content{
+
+    max-width:720px;
+
+}
+
+.eyebrow{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    color:var(--accent);
+
+    margin-bottom:28px;
+
+}
+
+.hero h1{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:72px;
+
+    line-height:1.05;
+
+}
+
+.hero h1 span{
+
+    display:block;
+
+    color:var(--accent);
+
+}
+
+.hero p{
+
+    margin-top:28px;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:18px;
+
+    max-width:560px;
+
+}
+
+.buttons{
+
+    margin-top:45px;
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:none;
+
+    font-size:15px;
+
+    border-radius:999px;
+
+    padding:15px 30px;
+
+}
+
+.primary{
+
+    background:var(--accent);
+
+    color:#071118;
+
+    font-weight:700;
+
+}
+
+.primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.secondary{
+
+    background:var(--surface);
+
+    color:var(--text);
+
+}
+
+.secondary:hover{
+
+    background:var(--surface2);
+
+}
+
+.mode-selector{
+
+    margin-top:60px;
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+.mode{
+
+    background:var(--surface);
+
+    color:var(--muted);
+
+}
+
+.mode.active{
+
+    background:var(--accent);
+
+    color:#071118;
+
+}
+
+footer{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+    padding:30px 0;
+
+    color:var(--muted);
+
+    border-top:1px solid var(--border);
 
 }
