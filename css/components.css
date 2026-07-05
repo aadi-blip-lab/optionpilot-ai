@@ -1,0 +1,121 @@
+/* =========================================
+   COMPONENTS
+========================================= */
+
+.tagline{
+
+    margin-top:18px;
+
+    color:var(--muted);
+
+    font-size:20px;
+
+    letter-spacing:1px;
+
+}
+
+.actions{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:55px;
+
+}
+
+.btn{
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:999px;
+
+    padding:15px 28px;
+
+    transition:.25s;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#081018;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+}
+
+.btn-outline{
+
+    background:transparent;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:var(--text);
+
+}
+
+.btn-outline:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.mode-switch{
+
+    margin-top:70px;
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.mode{
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:var(--surface);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    color:var(--muted);
+
+}
+
+.mode:hover{
+
+    background:var(--surface-light);
+
+    color:var(--text);
+
+}
+
+.mode.active{
+
+    background:var(--primary);
+
+    color:#081018;
+
+    font-weight:600;
+
+}
