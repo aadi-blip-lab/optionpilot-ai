@@ -217,9 +217,36 @@ function updateMarket(now){
    Fake Quotes (Temporary)
 ==========================================*/
 
-document.getElementById("niftyValue").textContent="25,000";
-document.getElementById("sensexValue").textContent="82,000";
-document.getElementById("bankniftyValue").textContent="56,000";
+async function loadStatus() {
+
+    try {
+
+        const response = await fetch(
+            "https://optionpilot-ai.onrender.com/api/status"
+        );
+
+        const data = await response.json();
+
+        document.getElementById("marketStatus").textContent =
+            data.market;
+
+        document.getElementById("marketCountdown").textContent =
+            data.countdown;
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("marketStatus").textContent =
+            "Disconnected";
+
+    }
+
+}
+
+loadStatus();
+
+setInterval(loadStatus,5000);
 
 
 /* ==========================================
