@@ -1,3 +1,10 @@
+/* ==========================================================
+   OPTIONPILOT
+   STYLE.CSS
+   PART 1
+   Reset • Layout • Header • Hero
+==========================================================*/
+
 *{
     margin:0;
     padding:0;
@@ -16,11 +23,19 @@ body{
 
     color:var(--text);
 
-    font-family:Inter,sans-serif;
+    font-family:var(--font-body);
 
-    transition:.35s;
+    transition:background .35s ease,color .35s ease;
+
+    overflow-x:hidden;
 
 }
+
+
+
+/* ==========================================
+   Background
+==========================================*/
 
 .noise{
 
@@ -28,22 +43,43 @@ body{
 
     inset:0;
 
-    opacity:.025;
-
     pointer-events:none;
 
+    opacity:.025;
+
     background-image:
+
     radial-gradient(circle at 25% 25%,white 1px,transparent 1px);
 
     background-size:24px 24px;
 
+    z-index:0;
+
 }
+
+
+
+.app{
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+
+
+/* ==========================================
+   Topbar
+==========================================*/
 
 .topbar{
 
-    width:min(1300px,92%);
+    width:min(1320px,94%);
 
     margin:auto;
+
+    padding:28px 0;
 
     display:flex;
 
@@ -51,119 +87,205 @@ body{
 
     align-items:center;
 
-    padding:35px 0;
-
 }
 
-.brand{
+
+
+.logo{
 
     display:flex;
 
     align-items:center;
 
-    gap:12px;
+    gap:16px;
 
 }
 
-.brand-dot{
 
-    width:12px;
 
-    height:12px;
+.logo-circle{
+
+    width:16px;
+
+    height:16px;
 
     border-radius:50%;
 
-    background:var(--accent);
+    background:var(--primary);
 
-    box-shadow:0 0 25px var(--accent);
+    box-shadow:
+
+    0 0 25px var(--primary);
 
 }
 
-.brand h2{
 
-    font-family:"Space Grotesk",sans-serif;
+
+.logo h2{
+
+    font-family:var(--font-heading);
+
+    font-size:22px;
 
     letter-spacing:3px;
 
 }
 
-nav{
 
-    display:flex;
 
-    gap:30px;
+.logo span{
 
-}
+    display:block;
 
-nav a{
+    margin-top:2px;
 
     color:var(--muted);
 
-    text-decoration:none;
-
-    transition:.25s;
+    font-size:12px;
 
 }
 
-nav a:hover{
 
-    color:var(--accent);
 
-}
-
-.hero{
-
-    width:min(1200px,92%);
-
-    margin:auto;
-
-    min-height:78vh;
+.header-right{
 
     display:flex;
 
     align-items:center;
 
-}
-
-.hero-content{
-
-    max-width:720px;
+    gap:18px;
 
 }
 
-.eyebrow{
 
-    display:inline-block;
 
-    padding:8px 18px;
+.connection{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:var(--surface);
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    font-size:13px;
+
+}
+
+
+
+.connection .dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--profit);
+
+    box-shadow:
+
+    0 0 12px var(--profit);
+
+}
+
+
+
+/* ==========================================
+   HERO
+==========================================*/
+
+.hero{
+
+    width:min(1320px,94%);
+
+    margin:auto;
+
+    min-height:78vh;
+
+    display:grid;
+
+    grid-template-columns:
+
+    1fr
+
+    430px;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+
+
+.hero-left{
+
+    max-width:620px;
+
+}
+
+
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 18px;
 
     border-radius:999px;
 
     background:var(--surface);
 
-    color:var(--accent);
+    border:1px solid var(--border);
 
-    margin-bottom:28px;
+    color:var(--primary);
+
+    font-size:13px;
+
+    letter-spacing:1px;
 
 }
+
+
 
 .hero h1{
 
-    font-family:"Space Grotesk",sans-serif;
+    margin-top:28px;
 
-    font-size:72px;
+    font-family:var(--font-heading);
+
+    font-size:76px;
 
     line-height:1.05;
 
+    font-weight:800;
+
 }
+
+
 
 .hero h1 span{
 
     display:block;
 
-    color:var(--accent);
+    color:var(--primary);
 
 }
+
+
 
 .hero p{
 
@@ -171,106 +293,913 @@ nav a:hover{
 
     color:var(--muted);
 
-    line-height:1.8;
-
     font-size:18px;
 
-    max-width:560px;
+    line-height:1.9;
+
+    max-width:520px;
 
 }
 
-.buttons{
 
-    margin-top:45px;
 
-    display:flex;
+/* ==========================================
+   MODE SWITCH
+==========================================*/
 
-    gap:18px;
+.mode-switch{
 
-}
-
-button{
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    border:none;
-
-    font-size:15px;
-
-    border-radius:999px;
-
-    padding:15px 30px;
-
-}
-
-.primary{
-
-    background:var(--accent);
-
-    color:#071118;
-
-    font-weight:700;
-
-}
-
-.primary:hover{
-
-    transform:translateY(-3px);
-
-}
-
-.secondary{
-
-    background:var(--surface);
-
-    color:var(--text);
-
-}
-
-.secondary:hover{
-
-    background:var(--surface2);
-
-}
-
-.mode-selector{
-
-    margin-top:60px;
+    margin-top:42px;
 
     display:flex;
 
     gap:14px;
 
+    flex-wrap:wrap;
+
 }
 
+
+
 .mode{
+
+    cursor:pointer;
+
+    border:none;
 
     background:var(--surface);
 
     color:var(--muted);
 
+    border-radius:999px;
+
+    padding:14px 22px;
+
+    font-size:15px;
+
+    transition:var(--transition);
+
+    border:1px solid var(--border);
+
 }
+
+
+
+.mode:hover{
+
+    background:var(--surface-2);
+
+    color:var(--text);
+
+}
+
+
 
 .mode.active{
 
-    background:var(--accent);
+    background:var(--primary);
 
-    color:#071118;
+    color:#07131B;
+
+    font-weight:700;
+
+}
+
+
+
+/* ==========================================
+   WORKSPACE BUTTON
+==========================================*/
+
+.workspace-btn{
+
+    margin-top:42px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:var(--button-bg);
+
+    color:var(--button-text);
+
+    padding:18px 34px;
+
+    border-radius:999px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    transition:.28s;
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.30);
+
+}
+
+
+
+.workspace-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+
+.workspace-btn:active{
+
+    transform:scale(.98);
+
+}
+/* ==========================================================
+   OPTIONPILOT
+   STYLE.CSS
+   PART 2
+   Workspace Clock
+==========================================================*/
+
+/* ==========================================
+   CLOCK PANEL
+==========================================*/
+
+.clock-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:28px;
+
+    padding:40px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/* ==========================================
+   ANALOG CLOCK
+==========================================*/
+
+.analog-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.analog-clock{
+
+    position:relative;
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    background:var(--clock-face);
+
+    border:2px solid var(--border);
+
+    box-shadow:
+
+        inset 0 0 0 12px rgba(255,255,255,.02),
+
+        0 30px 60px rgba(0,0,0,.45);
+
+}
+
+
+
+/* Progress Ring (future) */
+
+.analog-clock::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-10px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.03);
+
+}
+
+
+
+/* ==========================================
+   CLOCK MARKERS
+==========================================*/
+
+.analog-clock::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:18px;
+
+    border-radius:50%;
+
+    border:1px dashed rgba(255,255,255,.04);
+
+}
+
+
+
+/* ==========================================
+   HANDS
+==========================================*/
+
+.hand{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:50%;
+
+    transform-origin:bottom;
+
+    transform:translateX(-50%) rotate(0deg);
+
+    border-radius:50px;
+
+}
+
+
+
+.hour{
+
+    width:6px;
+
+    height:65px;
+
+    background:var(--hour-hand);
+
+}
+
+
+
+.minute{
+
+    width:4px;
+
+    height:90px;
+
+    background:var(--minute-hand);
+
+}
+
+
+
+.second{
+
+    width:2px;
+
+    height:105px;
+
+    background:var(--second-hand);
+
+}
+
+
+
+.center-dot{
+
+    position:absolute;
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    background:var(--clock-center);
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+
+        0 0 20px var(--clock-center);
+
+}
+
+
+
+/* ==========================================
+   DIGITAL CLOCK
+==========================================*/
+
+.digital{
+
+    text-align:center;
+
+}
+
+
+
+.time{
+
+    font-family:var(--font-mono);
+
+    font-size:38px;
+
+    letter-spacing:3px;
+
+}
+
+
+
+.date{
+
+    margin-top:10px;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+}
+
+
+
+/* ==========================================
+   MARKET CARD
+==========================================*/
+
+.market-card{
+
+    width:100%;
+
+    background:var(--surface-2);
+
+    border-radius:22px;
+
+    padding:26px;
+
+    border:1px solid var(--border);
+
+}
+
+
+
+.market-title{
+
+    color:var(--muted);
+
+    text-transform:uppercase;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.market-status{
+
+    margin-top:18px;
+
+    font-family:var(--font-heading);
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+
+
+.countdown{
+
+    margin-top:14px;
+
+    font-family:var(--font-mono);
+
+    font-size:22px;
+
+    color:var(--text);
+
+}
+
+
+
+/* ==========================================
+   MARKET STATE COLORS
+==========================================*/
+
+.market-open{
+
+    color:var(--profit);
+
+}
+
+
+
+.market-closed{
+
+    color:var(--loss);
+
+}
+
+
+
+.market-wait{
+
+    color:var(--warning);
+
+}
+
+
+
+/* ==========================================
+   LIVE PULSE
+==========================================*/
+
+.online .dot{
+
+    animation:pulse 2s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+0%{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+50%{
+
+    transform:scale(1.5);
+
+    opacity:.4;
+
+}
+
+100%{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+}
+
+
+
+/* ==========================================
+   CLOCK HOVER
+==========================================*/
+
+.clock-panel:hover .analog-clock{
+
+    transform:translateY(-4px);
+
+    transition:.35s;
+
+}
+
+
+
+.clock-panel:hover .center-dot{
+
+    box-shadow:
+
+        0 0 28px var(--clock-center);
+
+}
+/* ==========================================================
+   OPTIONPILOT
+   STYLE.CSS
+   PART 3
+   Quote Strip • Footer • Responsive • Polish
+==========================================================*/
+
+
+/* ==========================================
+   QUOTE STRIP
+==========================================*/
+
+.quote-strip{
+
+    width:min(1320px,94%);
+
+    margin:60px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.quote-strip>div{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:24px;
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow);
+
+}
+
+.quote-strip>div:hover{
+
+    transform:translateY(-4px);
+
+    background:var(--surface-2);
+
+}
+
+.quote-strip span{
+
+    display:block;
+
+    margin-top:14px;
+
+    font-family:var(--font-mono);
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+
+
+/* ==========================================
+   FOOTER
+==========================================*/
+
+footer{
+
+    width:min(1320px,94%);
+
+    margin:80px auto 30px;
+
+    padding-top:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid var(--border);
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+
+
+/* ==========================================
+   GLOBAL HOVER
+==========================================*/
+
+button{
+
+    transition:var(--transition);
+
+}
+
+button:hover{
+
+    filter:brightness(1.05);
+
+}
+
+
+
+/* ==========================================
+   GLASS EFFECT
+==========================================*/
+
+.clock-panel,
+.quote-strip>div{
+
+    backdrop-filter:blur(12px);
+
+}
+
+
+
+/* ==========================================
+   SELECTION
+==========================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#000;
+
+}
+
+
+
+/* ==========================================
+   LINKS
+==========================================*/
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+
+
+/* ==========================================
+   FADE IN
+==========================================*/
+
+.hero-left,
+.clock-panel{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* ==========================================
+   TABLET
+==========================================*/
+
+@media(max-width:1100px){
+
+.hero{
+
+    grid-template-columns:1fr;
+
+    gap:50px;
+
+}
+
+.hero-left{
+
+    max-width:100%;
+
+}
+
+.clock-panel{
+
+    max-width:520px;
+
+    margin:auto;
+
+}
+
+.quote-strip{
+
+    grid-template-columns:1fr;
 
 }
 
 footer{
 
-    width:min(1200px,92%);
+    flex-direction:column;
 
-    margin:auto;
-
-    padding:30px 0;
-
-    color:var(--muted);
-
-    border-top:1px solid var(--border);
+    gap:14px;
 
 }
+
+}
+
+
+
+/* ==========================================
+   MOBILE
+==========================================*/
+
+@media(max-width:768px){
+
+.topbar{
+
+    padding:20px 0;
+
+}
+
+.logo h2{
+
+    font-size:18px;
+
+}
+
+.hero{
+
+    min-height:auto;
+
+    padding-top:20px;
+
+}
+
+.hero h1{
+
+    font-size:46px;
+
+}
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+.mode-switch{
+
+    gap:10px;
+
+}
+
+.mode{
+
+    flex:1;
+
+    padding:14px 0;
+
+}
+
+.workspace-btn{
+
+    width:100%;
+
+}
+
+.analog-clock{
+
+    width:220px;
+
+    height:220px;
+
+}
+
+.hour{
+
+    height:56px;
+
+}
+
+.minute{
+
+    height:76px;
+
+}
+
+.second{
+
+    height:92px;
+
+}
+
+.time{
+
+    font-size:28px;
+
+}
+
+.market-status{
+
+    font-size:24px;
+
+}
+
+.countdown{
+
+    font-size:18px;
+
+}
+
+.quote-strip span{
+
+    font-size:24px;
+
+}
+
+footer{
+
+    text-align:center;
+
+}
+
+}
+
+
+
+/* ==========================================
+   SMALL MOBILE
+==========================================*/
+
+@media(max-width:480px){
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+.badge{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.logo{
+
+    gap:10px;
+
+}
+
+.connection{
+
+    display:none;
+
+}
+
+.mode-switch{
+
+    flex-direction:column;
+
+}
+
+.quote-strip{
+
+    margin-top:40px;
+
+}
+
+}
+
+
+
+/* ==========================================
+   READY
+==========================================*/
