@@ -1,59 +1,256 @@
-/* ==========================================
-   OPTIONPILOT THEME ENGINE
-========================================== */
+/* =====================================================
+   OPTIONPILOT
+   Theme Engine v1.0
+   DO NOT MODIFY (unless adding a new theme)
+======================================================*/
 
 :root{
 
-    --bg:#0d1117;
-    --surface:#161b22;
-    --surface2:#1f2632;
+    /* Typography */
 
-    --text:#f5f7fa;
-    --muted:#8b95a7;
+    --font-heading:'Manrope',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
 
-    --accent:#64d8ff;
+    /* Radius */
 
-    --profit:#52d273;
-    --loss:#ff6b6b;
-    --warning:#ffc857;
+    --radius-xs:8px;
+    --radius-sm:12px;
+    --radius-md:18px;
+    --radius-lg:24px;
+    --radius-xl:32px;
 
-    --border:rgba(255,255,255,.06);
+    /* Transition */
 
-    --radius:18px;
-
-    --transition:.30s;
+    --transition:.28s cubic-bezier(.4,0,.2,1);
 
 }
 
-/* ---------- Focus ---------- */
+
+/* =====================================================
+   FOCUS MODE (Default)
+======================================================*/
 
 body.focus{
 
-    --bg:#0d1117;
-    --surface:#161b22;
-    --surface2:#1f2632;
-    --accent:#64d8ff;
+    --bg:#090B11;
+
+    --surface:#11151D;
+
+    --surface-2:#181D28;
+
+    --surface-3:#212837;
+
+    --border:rgba(255,255,255,.06);
+
+    --primary:#67D7FF;
+
+    --primary-soft:rgba(103,215,255,.12);
+
+    --text:#F5F7FA;
+
+    --muted:#8E9AAE;
+
+    --profit:#45D483;
+
+    --loss:#FF6B6B;
+
+    --warning:#FFC857;
+
+    --shadow:
+    0 15px 50px rgba(0,0,0,.45);
 
 }
 
-/* ---------- Chill ---------- */
+
+
+/* =====================================================
+   CHILL MODE
+======================================================*/
 
 body.chill{
 
-    --bg:#111615;
-    --surface:#1a211f;
-    --surface2:#24312d;
-    --accent:#83ffd7;
+    --bg:#0D1110;
+
+    --surface:#141B19;
+
+    --surface-2:#1C2622;
+
+    --surface-3:#24322D;
+
+    --border:rgba(255,255,255,.05);
+
+    --primary:#87FFD6;
+
+    --primary-soft:rgba(135,255,214,.12);
+
+    --text:#F5F7FA;
+
+    --muted:#93A79F;
+
+    --profit:#62E59A;
+
+    --loss:#FF7E7E;
+
+    --warning:#FFD06A;
+
+    --shadow:
+    0 15px 45px rgba(0,0,0,.38);
 
 }
 
-/* ---------- Learn ---------- */
+
+
+/* =====================================================
+   LEARN MODE
+======================================================*/
 
 body.learn{
 
-    --bg:#181413;
-    --surface:#241d1a;
-    --surface2:#312823;
-    --accent:#ffb457;
+    --bg:#120F0D;
+
+    --surface:#1A1714;
+
+    --surface-2:#25211D;
+
+    --surface-3:#302922;
+
+    --border:rgba(255,255,255,.05);
+
+    --primary:#FFB65C;
+
+    --primary-soft:rgba(255,182,92,.15);
+
+    --text:#F6F4F1;
+
+    --muted:#B1A08C;
+
+    --profit:#6EE09C;
+
+    --loss:#FF7575;
+
+    --warning:#FFD479;
+
+    --shadow:
+    0 15px 45px rgba(0,0,0,.42);
+
+}
+
+
+
+/* =====================================================
+   SPACING SYSTEM
+======================================================*/
+
+:root{
+
+    --space-1:4px;
+    --space-2:8px;
+    --space-3:12px;
+    --space-4:16px;
+    --space-5:20px;
+    --space-6:24px;
+    --space-7:32px;
+    --space-8:40px;
+    --space-9:56px;
+    --space-10:72px;
+
+}
+
+
+
+/* =====================================================
+   Z INDEX
+======================================================*/
+
+:root{
+
+    --z-bg:0;
+    --z-content:10;
+    --z-header:50;
+    --z-modal:500;
+    --z-loader:9999;
+
+}
+
+
+
+/* =====================================================
+   CLOCK COLORS
+======================================================*/
+
+:root{
+
+    --clock-ring:rgba(255,255,255,.06);
+
+    --clock-face:var(--surface);
+
+    --clock-center:var(--primary);
+
+    --hour-hand:#FFFFFF;
+
+    --minute-hand:#C6D3E3;
+
+    --second-hand:var(--primary);
+
+}
+
+
+
+/* =====================================================
+   CARD SYSTEM
+======================================================*/
+
+:root{
+
+    --card-bg:var(--surface);
+
+    --card-hover:var(--surface-2);
+
+}
+
+
+
+/* =====================================================
+   BUTTONS
+======================================================*/
+
+:root{
+
+    --button-bg:var(--primary);
+
+    --button-text:#07131C;
+
+}
+
+
+
+/* =====================================================
+   SCROLLBAR
+======================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--bg);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--surface-3);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
 
 }
