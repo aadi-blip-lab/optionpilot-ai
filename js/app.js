@@ -228,26 +228,24 @@ async function loadStatus() {
         const data = await response.json();
 
         document.getElementById("marketStatus").textContent =
-            data.market;
+            data.market.replace("_", " ");
 
         document.getElementById("marketCountdown").textContent =
-            data.countdown;
+            data.time;
+
+        document.getElementById("todayDate").textContent =
+            data.date;
 
     } catch (error) {
 
         console.error(error);
 
         document.getElementById("marketStatus").textContent =
-            "Disconnected";
+            "OFFLINE";
 
     }
 
 }
-
-loadStatus();
-
-setInterval(loadStatus,5000);
-
 
 /* ==========================================
    Workspace Button
@@ -268,3 +266,7 @@ document.getElementById("workspaceBtn")
 updateClock();
 
 setInterval(updateClock,1000);
+
+loadStatus();
+
+setInterval(loadStatus,5000);
