@@ -1,1 +1,41 @@
+/* =========================================
+   OPTIONPILOT DESIGN SYSTEM
+========================================= */
 
+:root{
+
+    /* Background */
+
+    --bg:#0E1116;
+    --surface:#171B22;
+    --surface-light:#202632;
+
+    /* Text */
+
+    --text:#F5F7FA;
+    --muted:#94A3B8;
+
+    /* Brand */
+
+    --primary:#6EE7F9;
+
+    /* Trading */
+
+    --profit:#5EE38C;
+    --loss:#FF6B6B;
+    --warning:#FFC857;
+
+    /* Radius */
+
+    --radius:18px;
+
+    /* Shadow */
+
+    --shadow:
+    0 10px 40px rgba(0,0,0,.35);
+
+    /* Animation */
+
+    --speed:.25s;
+
+}
