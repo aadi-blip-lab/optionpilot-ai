@@ -15,21 +15,36 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def home():
-    return {
-        "application": "OptionPilot API",
-        "status": "running",
-        "version": "0.1.0"
-    }
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 @app.get("/api/status")
 def status():
+
+    now = datetime.now(ZoneInfo("Asia/Kolkata"))
+
+    weekday = now.weekday()
+
+    current_minutes = now.hour * 60 + now.minute
+
+    market_open = 9 * 60 + 15
+    market_close = 15 * 60 + 30
+
+    if weekday >= 5:
+        market = "WEEKEND"
+
+    elif current_minutes < market_open:
+        market = "PRE_MARKET"
+
+    elif current_minutes < market_close:
+        market = "LIVE"
+
+    else:
+        market = "CLOSED"
+
     return {
-        "market": "PRE_OPEN",
-        "session": "Morning",
-        "countdown": "00:45:21",
-        "connected": True,
-        "broker": "Upstox (Coming Soon)"
+        "market": market,
+        "time": now.strftime("%H:%M:%S"),
+        "date": now.strftime("%A, %d %B %Y")
     }
