@@ -1,4 +1,3 @@
-import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -10,7 +9,7 @@ from upstox import client
 
 app = FastAPI(
     title="OptionPilot API",
-    version="0.4.0"
+    version="0.5.0"
 )
 
 
@@ -37,7 +36,7 @@ def home():
     return {
         "application": "OptionPilot API",
         "status": "running",
-        "version": "0.4.0"
+        "version": "0.5.0"
     }
 
 
@@ -65,6 +64,18 @@ def config():
 def profile():
 
     return client.profile()
+
+
+# ==========================================================
+# LIVE MARKET
+# ==========================================================
+
+@app.get("/api/market")
+def market():
+
+    return client.get_ltp(
+        "NSE_INDEX|Nifty 50"
+    )
 
 
 # ==========================================================
