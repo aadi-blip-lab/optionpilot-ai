@@ -5,10 +5,12 @@ from zoneinfo import ZoneInfo
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from upstox import client
+
 
 app = FastAPI(
     title="OptionPilot API",
-    version="0.2.0"
+    version="0.3.0"
 )
 
 
@@ -18,7 +20,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # Restrict to your GitHub Pages domain later
+    allow_origins=["*"],  # Restrict later to GitHub Pages
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,19 +42,17 @@ UPSTOX_REDIRECT_URI = os.getenv("UPSTOX_REDIRECT_URI")
 
 @app.get("/")
 def home():
+
     return {
         "application": "OptionPilot API",
         "status": "running",
-        "version": "0.2.0"
+        "version": "0.3.0"
     }
 
 
 # ==========================================================
-# CONFIG (Safe Information Only)
+# CONFIG
 # ==========================================================
-
-from upstox import client
-
 
 @app.get("/api/config")
 def config():
@@ -63,11 +63,6 @@ def config():
 
         "upstox": client.status()
 
-    }
-def config():
-    return {
-        "client_id": UPSTOX_CLIENT_ID,
-        "redirect_uri": UPSTOX_REDIRECT_URI
     }
 
 
@@ -88,30 +83,41 @@ def status():
     market_close = 15 * 60 + 30
 
     if weekday >= 5:
+
         market = "WEEKEND"
 
     elif current_minutes < market_open:
+
         market = "PRE_MARKET"
 
     elif current_minutes < market_close:
+
         market = "LIVE"
 
     else:
+
         market = "CLOSED"
 
     return {
+
         "market": market,
+
         "time": now.strftime("%H:%M:%S"),
+
         "date": now.strftime("%A, %d %B %Y")
+
     }
 
 
 # ==========================================================
-# HEALTH CHECK
+# HEALTH
 # ==========================================================
 
 @app.get("/health")
 def health():
+
     return {
+
         "status": "healthy"
+
     }
