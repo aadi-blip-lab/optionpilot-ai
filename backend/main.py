@@ -10,7 +10,7 @@ from upstox import client
 
 app = FastAPI(
     title="OptionPilot API",
-    version="0.3.0"
+    version="0.4.0"
 )
 
 
@@ -20,20 +20,11 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Restrict later to GitHub Pages
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-# ==========================================================
-# ENVIRONMENT VARIABLES
-# ==========================================================
-
-UPSTOX_CLIENT_ID = os.getenv("UPSTOX_CLIENT_ID")
-UPSTOX_CLIENT_SECRET = os.getenv("UPSTOX_CLIENT_SECRET")
-UPSTOX_REDIRECT_URI = os.getenv("UPSTOX_REDIRECT_URI")
 
 
 # ==========================================================
@@ -46,7 +37,7 @@ def home():
     return {
         "application": "OptionPilot API",
         "status": "running",
-        "version": "0.3.0"
+        "version": "0.4.0"
     }
 
 
@@ -64,6 +55,16 @@ def config():
         "upstox": client.status()
 
     }
+
+
+# ==========================================================
+# PROFILE
+# ==========================================================
+
+@app.get("/api/profile")
+def profile():
+
+    return client.profile()
 
 
 # ==========================================================
