@@ -51,7 +51,19 @@ def home():
 # CONFIG (Safe Information Only)
 # ==========================================================
 
+from upstox import client
+
+
 @app.get("/api/config")
+def config():
+
+    return {
+
+        "application": "OptionPilot",
+
+        "upstox": client.status()
+
+    }
 def config():
     return {
         "client_id": UPSTOX_CLIENT_ID,
