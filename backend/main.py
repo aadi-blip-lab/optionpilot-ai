@@ -73,9 +73,51 @@ def profile():
 @app.get("/api/market")
 def market():
 
-    return client.get_ltp(
-        "NSE_INDEX|Nifty 50"
-    )
+    quote = client.get_ltp("NSE_INDEX|Nifty 50")
+
+    try:
+
+        data = quote["data"]["NSE_INDEX:Nifty 50"]
+
+        return {
+
+            "status": "success",
+
+            "market": "LIVE",
+
+            "nifty": {
+
+                "ltp": data["last_price"],
+
+                "previous_close": data["cp"],
+
+                "change": round(
+                    data["last_price"] - data["cp"],
+                    2
+                ),
+
+                "change_percent": round(
+                    ((data["last_price"] - data["cp"]) / data["cp"]) * 100,
+                    2
+                )
+
+            },
+
+            "timestamp": datetime.now(
+                ZoneInfo("Asia/Kolkata")
+            ).strftime("%H:%M:%S")
+
+        }
+
+    except Exception as e:
+
+        return {
+
+            "status": "error",
+
+            "message": str(e)
+
+        }
 
 
 # ==========================================================
