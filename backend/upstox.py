@@ -2,7 +2,8 @@
 OptionPilot
 Upstox API Client
 """
-
+import upstox_client
+from upstox_client.rest import ApiException
 import os
 import requests
 
